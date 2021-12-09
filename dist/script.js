@@ -17932,6 +17932,33 @@ var checkNumInputs = function checkNumInputs(selector) {
 
 /***/ }),
 
+/***/ "./src/js/modules/closeModal.js":
+/*!**************************************!*\
+  !*** ./src/js/modules/closeModal.js ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var closeModal = function closeModal() {
+  var windowsSelector = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '[data-modal]';
+  var windows = document.querySelectorAll(windowsSelector);
+  windows.forEach(function (item) {
+    item.style.display = 'none';
+  });
+  document.body.style.overflow = '';
+  document.body.style.marginRight = '0px';
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (closeModal);
+
+/***/ }),
+
 /***/ "./src/js/modules/forms.js":
 /*!*********************************!*\
   !*** ./src/js/modules/forms.js ***!
@@ -17952,6 +17979,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var regenerator_runtime_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! regenerator-runtime/runtime */ "./node_modules/regenerator-runtime/runtime.js");
 /* harmony import */ var regenerator_runtime_runtime__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(regenerator_runtime_runtime__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _checkNumInputs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./checkNumInputs */ "./src/js/modules/checkNumInputs.js");
+/* harmony import */ var _closeModal__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./closeModal */ "./src/js/modules/closeModal.js");
+
 
 
 
@@ -18027,6 +18056,7 @@ var forms = function forms(state) {
         clearInputs();
         setTimeout(function () {
           statusMessage.remove();
+          Object(_closeModal__WEBPACK_IMPORTED_MODULE_6__["default"])();
         }, 5000);
       });
     });
@@ -18089,6 +18119,8 @@ var images = function images() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
 /* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _closeModal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./closeModal */ "./src/js/modules/closeModal.js");
+
 
 
 var modals = function modals() {
@@ -18113,22 +18145,10 @@ var modals = function modals() {
         document.body.style.marginRight = "".concat(scroll, "px");
       });
     });
-    close.addEventListener('click', function () {
-      windows.forEach(function (item) {
-        item.style.display = 'none';
-      });
-      modal.style.display = 'none';
-      document.body.style.overflow = '';
-      document.body.style.marginRight = '0px';
-    });
+    close.addEventListener('click', _closeModal__WEBPACK_IMPORTED_MODULE_1__["default"]);
     modal.addEventListener('click', function (e) {
       if (e.target === modal && clickCloseOverlay) {
-        windows.forEach(function (item) {
-          item.style.display = 'none';
-        });
-        modal.style.display = 'none';
-        document.body.style.overflow = '';
-        document.body.style.marginRight = '0px';
+        Object(_closeModal__WEBPACK_IMPORTED_MODULE_1__["default"])();
       }
     });
   }

@@ -1,3 +1,5 @@
+import closeModal from "./closeModal";
+
 const modals = () => {
     function bindModal(triggerSelector, modalSelector, closeSelector, clickCloseOverlay = true, scroll = 0) {
         const trigger = document.querySelectorAll(triggerSelector),
@@ -21,25 +23,11 @@ const modals = () => {
            });
         });
 
-        close.addEventListener('click', () => {
-            windows.forEach(item => {
-                item.style.display = 'none';
-            });
-
-            modal.style.display = 'none';
-            document.body.style.overflow = '';
-            document.body.style.marginRight = '0px';
-        });
+        close.addEventListener('click', closeModal);
 
         modal.addEventListener('click', (e) => {
             if (e.target === modal && clickCloseOverlay) {
-                windows.forEach(item => {
-                    item.style.display = 'none';
-                });
-
-                modal.style.display = 'none';
-                document.body.style.overflow = '';
-                document.body.style.marginRight = '0px';
+                closeModal();
             }
         });
     }
