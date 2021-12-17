@@ -23,7 +23,7 @@ const modals = () => {
            });
         });
 
-        close.addEventListener('click', closeModal);
+        close.addEventListener('click', () => {closeModal();});
 
         modal.addEventListener('click', (e) => {
             if (e.target === modal && clickCloseOverlay) {
