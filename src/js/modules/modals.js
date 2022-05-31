@@ -1,4 +1,5 @@
 import closeModal from "./closeModal";
+import calcScroll from "./calcScroll";
 
 const modals = () => {
     function bindModal(triggerSelector, modalSelector, closeSelector, clickCloseOverlay = true, scroll = 0) {
@@ -38,19 +39,6 @@ const modals = () => {
             document.body.style.overflow = 'hidden';
             document.body.style.marginRight = `${scroll}px`;
         }, time);
-    }
-
-    function calcScroll() {
-        let div = document.createElement('div');
-        div.style.height = '50px';
-        div.style.width = '50px';
-        div.style.overflowY = 'scroll';
-        div.style.visibility = 'hidden';
-
-        document.body.append(div);
-        let scrollWidth = div.offsetWidth - div.clientWidth;
-        div.remove();
-        return scrollWidth;
     }
 
     const scroll = calcScroll();
